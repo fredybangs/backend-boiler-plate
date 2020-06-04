@@ -1,12 +1,13 @@
-require('dotenv').config();
+const config = require('./config/key');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const verify = require('./routes/verifyToken');
 
 // Connect to DB
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(config.mongoURI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
@@ -20,6 +21,7 @@ db.once('open', () => {
 });
 
 //Body Parser MIddleware
+app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
