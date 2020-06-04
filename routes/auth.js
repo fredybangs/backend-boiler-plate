@@ -5,8 +5,9 @@ const router = express.Router();
 const User = require('../models/user');
 const bycrypt = require('bcrypt');
 const { registerValidaton, loginValidaton } = require('../validation');
+const verify = require('./verifyToken');
 
-router.get('/register', async (req, res) => {
+router.get('/', verify, async (req, res) => {
 	try {
 		const users = await User.find();
 		res.json(users);
