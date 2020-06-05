@@ -4,7 +4,7 @@ const config = require('../config/key');
 const router = express.Router();
 const User = require('../models/user');
 const bycrypt = require('bcrypt');
-const { registerValidaton, loginValidaton } = require('../validation');
+const { registerValidaton, loginValidaton } = require('../../validation');
 const verify = require('./verifyToken');
 
 router.get('/', verify, async (req, res) => {
