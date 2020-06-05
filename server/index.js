@@ -28,6 +28,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Users Route
 app.use('/api/user', require('./routes/auth'));
 
+//EXAMPLE
+app.get('/', (req, res) => {
+	res.json({ hello: 'I am happy to deploy our application' });
+});
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
