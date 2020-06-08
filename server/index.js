@@ -1,40 +1,60 @@
-const config = require('./config/key');
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
+const path = require('path');
+const cors = require('cors');
+
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const verify = require('./routes/verifyToken');
 
-// Connect to DB
-mongoose.connect(config.mongoURI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
-let db = mongoose.connection;
+const config = require('./config/key');
 
-db.on('error', (error) => {
-	console.log(error);
-});
-db.once('open', () => {
-	console.log('Connected to Database');
-});
+// const mongoose = require("mongoose");
+// mongoose
+//   .connect(config.mongoURI, { useNewUrlParser: true })
+//   .then(() => console.log("DB connected"))
+//   .catch(err => console.error(err));
 
-//Body Parser MIddleware
-app.use(cookieParser());
-app.use(express.json());
+const mongoose = require('mongoose');
+const connect = mongoose
+	.connect(config.mongoURI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false,
+	})
+	.then(() => console.log('MongoDB Connected...'))
+	.catch((err) => console.log(err));
+
+app.use(cors());
+
+//to not get any deprecation warning or error
+//support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
+//to get json data
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+app.use(cookieParser());
 
-// Users Route
-app.use('/api/user', require('./routes/auth'));
+app.use('/api/users', require('./routes/users'));
 
-//EXAMPLE
-app.get('/', (req, res) => {
-	res.json({ hello: 'I am happy to deploy our application' });
-});
+//use this to show the image you have in node js server to client (react js)
+//https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
+app.use('/uploads', express.static('uploads'));
 
-const port = process.env.PORT || 8000;
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+	// Set static folder
+	// All the javascript and css files will be read and served from this folder
+	app.use(express.static('client/build'));
+
+	// index.html for all page routes    html or routing and naviagtion
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+	});
+}
+
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-	console.log(`Server started on port ${port}`);
+	console.log(`Server Listening on ${port}`);
 });
