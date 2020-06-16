@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { Formik } from 'formik';
-import Copyright from '../../views/SignIn_SignUp/Copyright';
+// import Copyright from '../../views/SignIn_SignUp/Copyright';
 import * as Yup from 'yup';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -89,7 +89,7 @@ function Register(props) {
 
 								dispatch(registerUser(dataToSubmit)).then((response) => {
 									if (response.payload.success) {
-										props.history.push('/login');
+										props.history.push('/sign-in');
 									} else {
 										alert(response.payload.err.errmsg);
 									}
@@ -217,9 +217,7 @@ function Register(props) {
 					</Formik>
 				</div>
 			</Container>
-			<Box mt={8}>
-				<Copyright />
-			</Box>
+			<Box mt={8}>{/* <Copyright /> */}</Box>
 		</Container>
 	);
 }

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { loginUser } from '../../../_actions/user_actions';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import Copyright from '../../views/SignIn_SignUp/Copyright';
+// import Copyright from '../../views/SignIn_SignUp/Copyright';
 import * as Yup from 'yup';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,9 +11,9 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import AppBar from '../MainPage/modules/components/AppBar';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {
-	AppBar,
 	Button,
 	TextField,
 	FormControlLabel,
@@ -225,9 +225,7 @@ function Login(props) {
 					</Formik>
 				</div>
 			</Container>
-			<Box mt={8}>
-				<Copyright />
-			</Box>
+			<Box mt={8}>{/* <Copyright /> */}</Box>
 		</Container>
 	);
 }
