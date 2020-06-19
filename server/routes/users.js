@@ -29,7 +29,7 @@ router.post('/register', (req, res) => {
 		return res.status(200).json({
 			success: true,
 		});
-	});
+	});y
 });
 
 router.post('/login', (req, res) => {
