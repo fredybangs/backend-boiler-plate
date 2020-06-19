@@ -8,10 +8,12 @@
 		"npm": "6.14.2"
 	},
 	"scripts": {
+		"client-install": "npm install --prefix client",
 		"start": "node server/index.js",
-		"backend": "nodemon server/index.js",
-		"frontend": "npm run start --prefix client",
-		"dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+		"server": "nodemon server/index.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install prefix client && npm run build --prefix client"
 	},
 	"author": "Alfred Bangura",
 	"license": "ISC",
@@ -28,13 +30,13 @@
 		"jsonwebtoken": "^8.5.1",
 		"moment": "^2.24.0",
 		"mongoose": "^5.9.17",
+		"concurrently": "^5.2.0",
 		"r": "0.0.5",
 		"react-redux": "^5.0.7",
 		"saslprep": "^1.0.3",
 		"supports-color": "^7.1.0"
 	},
 	"devDependencies": {
-		"concurrently": "^5.2.0",
 		"http-proxy-middleware": "^1.0.4",
 		"nodemon": "^2.0.4"
 	}
