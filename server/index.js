@@ -16,7 +16,7 @@ const config = require('./config/key');
 
 const mongoose = require('mongoose');
 
-var url = process.env.MONGODB_URI || 'mongodb://localhost/salone247';
+var url = process.env.MONGO_URI || 'mongodb://localhost/salone247';
 const connect = mongoose
 	.connect(url, {
 		useNewUrlParser: true,
