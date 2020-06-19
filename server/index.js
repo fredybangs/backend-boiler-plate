@@ -15,8 +15,10 @@ const config = require('./config/key');
 //   .catch(err => console.error(err));
 
 const mongoose = require('mongoose');
+
+var url = process.env.MONGODB_URI || 'mongodb://localhost/salone247';
 const connect = mongoose
-	.connect(config.mongoURI, {
+	.connect(url, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useCreateIndex: true,
