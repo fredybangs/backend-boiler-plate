@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models/User');
+const User = require('../models/User');
 
 const { auth } = require('../middleware/auth');
 
@@ -29,7 +29,8 @@ router.post('/register', (req, res) => {
 		return res.status(200).json({
 			success: true,
 		});
-	});y
+	});
+	y;
 });
 
 router.post('/login', (req, res) => {
