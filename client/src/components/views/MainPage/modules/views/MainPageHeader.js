@@ -61,10 +61,10 @@ function MainPageHeader(props) {
 					Join Us Now
 				</Button>
 			</Link>
-			<Typography
-				variant='body2'
-				color='inherit'
-				className={classes.more}></Typography>
+			<Typography variant='body2' color='inherit' className={classes.more}>
+				{' '}
+				nbfd
+			</Typography>
 		</HeaderLayout>
 	);
 }

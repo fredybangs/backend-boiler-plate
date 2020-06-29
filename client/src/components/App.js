@@ -8,6 +8,7 @@ import NavBar from './views/NavBar/NavBar';
 import Footer from './views/Footer/Footer';
 import Index from './views/MainPage/Landing';
 import Home from './views/MainPage/Home';
+import UploadProductPage from './views/UploadProductPage/UploadProductPage';
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -18,10 +19,15 @@ function App() {
 			<NavBar />
 			<div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
 				<Switch>
-					<Route exact path='/' component={Auth(Index, null)} />
-					<Route exact path='/home' component={Auth(Home, null)} />
+					<Route exact path='/' component={Auth(Index, false)} />
+					<Route exact path='/home' component={Auth(Home, true)} />
 					<Route exact path='/sign-in' component={Auth(Login, false)} />
 					<Route exact path='/sign-up' component={Auth(Register, false)} />
+					<Route
+						exact
+						path='/product/upload'
+						component={Auth(UploadProductPage, true)}
+					/>
 				</Switch>
 			</div>
 			<Footer />
