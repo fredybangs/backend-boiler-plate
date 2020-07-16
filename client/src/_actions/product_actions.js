@@ -14,7 +14,7 @@ import { FETCH_PRODUCTS, NEW_PRODUCT } from './types';
 
 export function fetchPosts() {
 	const products = axios
-		.get(`${USER_SERVER}/products`)
+		.get(`${PRODUCT_SERVER}/products`)
 		.then((response) => response.data);
 
 	return {
@@ -25,7 +25,7 @@ export function fetchPosts() {
 
 export function createProduct(productData) {
 	const product = axios
-		.post(`${USER_SERVER}/products`, productData)
+		.post(`${PRODUCT_SERVER}/products`, productData)
 		.then((response) => response.data);
 
 	return {
