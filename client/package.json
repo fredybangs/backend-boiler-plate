@@ -8,7 +8,7 @@
 		"@material-ui/lab": "^4.0.0-alpha.49",
 		"@material/list": "^5.1.0",
 		"antd": "^3.24.1",
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"core-js": "^3.6.5",
 		"formik": "^1.5.8",
 		"history": "^4.10.1",
